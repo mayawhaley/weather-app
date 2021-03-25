@@ -6,44 +6,210 @@
 
 body{
     height: 100vh;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     background: linear-gradient(rgb(47,150,163), rgb(48,62,143));
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     color: white;
 }
 
-.location, .temp {
-    height: 30vh;
-    width: 50%;
+.show {
+    visibility: visible;
+}
+
+
+.show .temp-container {
+    height: 50%;
+    width: 75%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-direction: row;
+    /* background-color: green; */
+    border-radius: 40px;
+    position: fixed;
+    bottom: 10%;
+    
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    background: rgba( 255, 255, 255, 0.35 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
     
 }
 
-.temp{
-    flex-direction: column;
+
+.show .main-info {
+    /* background-color: lavender; */
+    display: flex;
+    width: 40%;
+    height: 20%;
+    border-radius: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+    align-items: center;
+    top: 10%;
+    position: fixed;
+
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    background: rgba( 255, 255, 255, 0.35 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    
+}
+
+
+.temp-span {
+    /* background-color: hotpink; */
+    display:flex;
+    position: absolute;
+    font-size: 1.8vw;
+    width: 8%;
+    float: right;
+    margin-top: -6%;
+    margin-left: 13%;
+    
+}
+
+
+.main-desc{
+    font-size: 1.3vw;
+    width: 60%;
+    height: 75%;
+    text-align: left;
+    /* background-color: turquoise; */
+    position: fixed;
+    line-height: 1.5;
+    
+    top: 70%;
+    left: 65%;
+    transform: translate(-50%, -80%);
+}
+
+.current-temp{
+    position: fixed;
+    font-size: 4vw;
+    /* font-weight: lighter; */
+    height: 60%;
+    width: 20%;
+    top: 35%;
+    left: 8%;
+
+    /* background-color: red; */
+}
+
+
+
+.current-icon img{
+    position: fixed;
+    /* background-color: crimson; */
+    width: 10%;
+    left: 12%;
+    bottom: 60%;
+}
+
+.icon img{
+    position: relative;
+    /* background-color: cyan; */
+    width: 40%;
+    /* left: 25%; */
+    bottom: 50%;
+}
+
+.current-temp .temp-span{
+    /* margin-top: -70px; */
+
+    display:flex;
+    position: absolute;
+    font-size: 1.8vw;
+    width: 8%;
+    float: right;
+    margin-top: -80%;
+    margin-left: 90%;
+    
+    /* margin-left: -60px;
+    display:flex;
+    position: initial;
+    width: 20px;
+    float: right;
+    background-color: yellow; */
+
 }
 
 .degree-section {
     display: flex;
     align-items: center;
-    cursor: pointer;
+    /* align-content: center; */
+    /* justify-content: space-around; */
+    /* justify-items: center; */
+    text-align: center;
+    flex-direction: row;
+    width: 90%;
+    height: 80%;
+    position: fixed;
+    /* background-color: teal; */
+
 }
 
-.degree-section span {
-    margin: 10px;
-    font-size: 30px;
+
+.temp-one, .temp-two, .temp-three, .temp-four, .temp-five{
+    /* background-color: brown; */
+    width: 30%;
+    height: 70%;
+    padding: 10px;
+    border-right: 2px solid rgba( 255, 255, 255, 0.35 );
+    /* margin-bottom: 5px; */
+    
 }
+
+.desc-one, .desc-two, .desc-three, .desc-four, .desc-five{
+    line-height: 1.5;
+}
+
+.temp-five{
+    border: none;
+}
+
+.high-low{
+    display: inline-flex;
+    justify-content: space-between;
+    text-align: justify;
+    /* align-content: center; */
+    /* margin-left: 25px; */
+    /* background-color: crimson; */
+    width: 100%;
+    height: 15%;
+
+}
+
+/* .high-one{
+    background-color: indigo;
+}
+
+.low-one{
+    background-color: khaki;
+} */
 
 .degree-section h2 {
-    font-size: 40px;
+    font-size: 3.5vw;
+    position: inherit;
+    /* background-color: cornflowerblue; */
+    text-align: center;
+    margin-bottom: 5px;
+    /* width: 80%; */
+    /* padding: 100%; */
 }
 
-.show {
+
+.popup {
+    visibility: visible;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,25 +221,30 @@ body{
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
     z-index: 1;
-    /* visibility: visible; */
     background: rgba( 255, 255, 255, 0.35 );
-/* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
-    border-radius: 40px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
-/* .search .show {
-    visibility: hidden;
-} */
 
+.search-box{
+    display: flex;
+    width: 300px;
+    height: 100px;
+    flex-direction: row;
+    /* background-color: khaki; */
+    justify-content: center;
+    align-items: center;
+    visibility: visible;
+}
 .search-box input {
+
     width: 250px;
     height: 40px;
     font-size: 20px;
     color: black;
     outline: none;
-
+    padding-left: 20px;
     background: rgba( 255, 255, 255, 0.10 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -89,23 +260,34 @@ body{
     font-size: 15px;
 }
 
+.search-box input:after::placeholder{
+    background: transparent;
+}
+
 .search-box input:focus::placeholder {
     color: transparent;
+    background-color: transparent;
 }
 
 
-input:focus,
-input:active {
+input:focus{
     transition: 0.3s;
     border-color: transparent;
     border-bottom: 2px solid white;
-    background: none;
-    box-shadow: transparent;
+    /* background: none; */
+    /* background: orange; */
+    /* box-shadow: transparent;
     backdrop-filter: transparent;
-    -webkit-backdrop-filter:transparent;
+    -webkit-backdrop-filter:transparent; */
     border-radius: 0;
-    
+}
 
+/* input:active{
+    background-color: transparent;
+} */
+
+input:after{
+    background: none;
 }
 
 .search-box button{
@@ -115,8 +297,8 @@ input:active {
     border: none;
     color: black;
     display: flex;
-    position: absolute;;
-    left: 78%;
-    top: 48.5%;
+    position: absolute;
+    left: 76%;
+    /* top: 50%; */
     font-weight: 100;
 }
