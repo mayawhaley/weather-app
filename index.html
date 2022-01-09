@@ -13,104 +13,107 @@
 <body>
     <div id="search">
         <div class="search-box">
-            <input id="zip" type="text"  placeholder="Enter Zip Code">
-            <button  onclick="action()" id="button" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
+            <div class="search-title">
+                <h2>Enter A Zip Code:</h2>
+            </div>
+            <div class="search-input">
+            <input autocomplete="off" id="zip" type="text">
+           
+                <button  onclick="submit()" id="button" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </div>
     </div>
     
 
-
+    <button class="reload" id="reload" onclick="reload()" type="submit">
+        <i class="fa fa-search"></i>
+    </button>
     <div class="main-info">
         <div class="current-temp">
+            <div class="current-icon"></div>
             <h2 class="degree"></h2>
             <span class="temp-span"></span>
-            <div class="current-icon"></div>
         </div>
 
-        <!-- <h2>City: </h2> -->
         <div class="main-desc">
             <h2 class="current-feel"></h2>
             <h2 class="current-desc"></h2>
             <h2 class="location-city"></h2>
-
         </div>
         
-
-
     </div>
 
-    <div class="temp-container">
+    <div class="temperature-container">
         <div class="degree-section">
             
-            <div class="temp-one">
-                <div class="date-one"></div>
+            <div class="temp-one temperature">
+                <div class="date-one date"></div>
                 <div class="icon-one icon"></div>
-                <h2 class="degree-one"></h2>
+                <h2 class="degree-one degree"></h2>
                 <span class="temp-span"></span>
                 <div class="high-low">
                     <h3 class="high-one"></h3>
                     <h3 class="low-one"></h3>
                 </div>
                 
-                <h3 class="desc-one"></h3>
+                <h3 class="desc-one desc"></h3>
             </div>
             
-            <div class="temp-two">
-                <div class="date-two"></div>
+            <div class="temp-two temperature">
+                <div class="date-two date"></div>
                 <div class="icon-two icon"></div>
-                <h2 class="degree-two"></h2>
+                <h2 class="degree-two degree"></h2>
                 <span class="temp-span"></span>
                 <div class="high-low">
                     <h3 class="high-two"></h3>
                     <h3 class="low-two"></h3>
                 </div>
                 
-                <h3 class="desc-two"></h3>
+                <h3 class="desc-two desc"></h3>
             </div>
 
-            <div class="temp-three">
-                <div class="date-three"></div>
+            <div class="temp-three temperature">
+                <div class="date-three date"></div>
                 <div class="icon-three icon"></div>
-                <h2 class="degree-three"></h2>
+                <h2 class="degree-three degree"></h2>
                 <span class="temp-span"></span>
                 <div class="high-low">
                     <h3 class="high-three"></h3>
                     <h3 class="low-three"></h3>
                 </div>
                 
-                <h3 class="desc-three"></h3>
+                <h3 class="desc-three desc"></h3>
             </div>
 
-            <div class="temp-four">
-                <div class="date-four"></div>
+            <div class="temp-four temperature">
+                <div class="date-four date"></div>
                 <div class="icon-four icon"></div>
-                <h2 class="degree-four"></h2>
+                <h2 class="degree-four degree"></h2>
                 <span class="temp-span"></span>
                 <div class="high-low">
                     <h3 class="high-four"></h3>
                     <h3 class="low-four"></h3>
                 </div>
                 
-                <h3 class="desc-four"></h3>
+                <h3 class="desc-four desc"></h3>
             </div>
 
-            <div class="temp-five">
-                <div class="date-five"></div>
+            <div class="temp-five temperature">
+                <div class="date-five date"></div>
                 <div class="icon-five icon"></div>
-                <h2 class="degree-five"></h2>
+                <h2 class="degree-five degree"></h2>
                 <span class="temp-span"></span>
                 <div class="high-low">
                     <h3 class="high-five"></h3>
                     <h3 class="low-five"></h3>
                 </div>
-                <h3 class="desc-five"></h3>
+                <h3 class="desc-five desc"></h3>
                 
             </div>
             
         </div>
-        <!-- <div class="temp-description"> It's snowing outside! </div> -->
         
 <script src="app.js"></script>
 

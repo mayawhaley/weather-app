@@ -1,42 +1,34 @@
 
-// const zip_code = document.getElementsByClassName('search-box').innerHTML;
-
-// console.log("zip code:", zip_code)
-
-
 window.onload = function () {
-    var popup = document.getElementById("search");
+    let popup = document.getElementById("search");
     popup.classList.toggle("popup");
-    // console.log("loaded")
+
+    document.getElementById("reload").style.visibility = "hidden";
+    // reload.classList.toggle("reload");
 }
 
 
 // taking the zip code and converting to latitude and longiture.
-
 function getLatLong() {
     return new Promise((resolve, reject) => {
 
         var zip_code = document.getElementById("zip").value;
         document.getElementById("zip").innerHTML = zip_code;
 
-        const api = `https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-codes&q=${zip_code}&facet=zipcodetype`;
 
-        fetch(api)
+        const API = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=georef-united-states-of-america-zc-point%40public&q=${zip_code}&facet=zip_code&facet=usps_city&facet=geo_point_2d`
+
+        fetch(API)
             .then(response => {
                 return response.json();
             })
             .then(data => {
 
-                // let lat = data.records[0].fields.coord[0];
-                // let long = data.records[0].fields.coord[1];
+                let city = data.records[0].fields.usps_city
+                let state = data.records[0].fields.ste_name
 
-                var location = data.records[0].fields.locationtext
+                document.querySelector(".location-city").textContent = `${city}, ${state}`;
 
-                document.querySelector(".location-city").textContent = location;
-
-                // // console.log(location, weather, desc)
-                // console.log(lat, long, location)
-                // console.log(data);
                 resolve(data);
 
             });
@@ -45,30 +37,18 @@ function getLatLong() {
 
 }
 
-// function dates(){
-
-//         var d = new Date();
-//         var weekday = new Array(7);
-//         weekday[0] = "Sunday";
-//         weekday[1] = "Monday";
-//         weekday[2] = "Tuesday";
-//         weekday[3] = "Wednesday";
-//         weekday[4] = "Thursday";
-//         weekday[5] = "Friday";
-//         weekday[6] = "Saturday";
-
-//         var next_day = weekday[d.getDay()+1];
-//         var day_two = weekday[d.getDay()+1]
-//         document.getElementById("demo").innerHTML = n;
-// }
+function reload() {
+    location.reload()
+    return false
+}
 
 
-async function action() {
+async function submit() {
 
 
     let data = await getLatLong();
-    let lat = data.records[0].fields.coord[0];
-    let long = data.records[0].fields.coord[1]
+    let lat = data.records[0].fields.geo_point_2d[0];
+    let long = data.records[0].fields.geo_point_2d[1]
 
 
     const api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&us&units=imperial&exclude=minutely&appid=c65b5a4ae830931f5359393fc7c1e58b`;
@@ -82,6 +62,7 @@ async function action() {
     popup.classList.toggle("popup");
 
     document.getElementsByClassName("search-box")[0].style.display = "none";
+    document.getElementsByClassName("reload")[0].style.visibility = "visible";
 
 
     fetch(api)
@@ -91,7 +72,7 @@ async function action() {
         .then(data => {
 
             //current weather
-            let current_temp = Math.round(data.current.temp);
+            let current_temp = `${Math.round(data.current.temp)}`;
             let current_desc = data.current.weather[0].description;
             let current_feel = Math.round(data.current.feels_like);
             let current_icon = data.current.weather[0].icon;
@@ -136,11 +117,11 @@ async function action() {
 
 
             //daily weather
-            document.querySelector(".degree-one").textContent = degree_one;
-            document.querySelector(".degree-two").textContent = degree_two;
-            document.querySelector(".degree-three").textContent = degree_three;
-            document.querySelector(".degree-four").textContent = degree_four;
-            document.querySelector(".degree-five").textContent = degree_five;
+            document.querySelector(".degree-one").textContent = `${degree_one}°`;
+            document.querySelector(".degree-two").textContent = `${degree_two}°`;
+            document.querySelector(".degree-three").textContent = `${degree_three}°`;
+            document.querySelector(".degree-four").textContent = `${degree_four}°`;
+            document.querySelector(".degree-five").textContent = `${degree_five}°`;
 
             document.querySelector(".high-one").innerHTML = `H: ${high_one}°F`;
             document.querySelector(".high-two").innerHTML = `H: ${high_two}°F`;
@@ -181,7 +162,7 @@ async function action() {
 
             document.querySelector(".icon-five").innerHTML = `<img src="http://openweathermap.org/img/wn/${icon_five}@2x.png">`
 
-            document.querySelectorAll("span").forEach(e => e.textContent = "F");
+            // document.querySelectorAll("span").forEach(e => e.textContent = "F");
 
 
             // current weather
@@ -189,11 +170,11 @@ async function action() {
 
             document.querySelector(".current-feel").innerHTML = `Feels Like: ${current_feel}°F`;
 
-            document.querySelector(".degree").textContent = current_temp;
+            // document.querySelector(".degree").textContent = current_temp;
+            document.querySelector(".degree").innerHTML = `${current_temp} <p>°F</p>`;
 
             document.querySelector(".current-icon").innerHTML = `<img src="http://openweathermap.org/img/wn/${current_icon}@2x.png">`
 
-            console.log(data);
         });
 
     return 0;
@@ -205,6 +186,6 @@ var input = document.getElementById("zip");
 input.addEventListener("keyup", function (event) {
     if (event.code === 'Enter') {
         event.preventDefault();
-        action();
+        submit();
     }
 });
